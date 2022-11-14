@@ -27,3 +27,14 @@ vie : à gérer
 graphique : carte blanche
 
 musique pas obligatoire
+
+
+
+
+
+
+
+
+=============>
+suivre l'exemple du space invaders
+avec les collisions, ennemies, plateau,...
