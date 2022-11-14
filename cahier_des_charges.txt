@@ -1,4 +1,4 @@
-plateau :                                pyxels
+plateau :                                pyxels                       pour le 28 novembre
   rebonds
     -> sections>=3
 
@@ -22,7 +22,7 @@ briques :
 
 score : à gérer
 vie : à gérer
-
+menu : possible
 
 graphique : carte blanche
 
