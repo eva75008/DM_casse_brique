@@ -8,3 +8,23 @@ plateau :                                pyxels
    mvts : gérées avec le clavier
 
    vitesse du plateau : fixe
+
+balle :
+  taille : fixe
+  vitesse : variable (au fur et à mesure du temps)
+  angle de départ : aléatoire
+  balles multiples : non
+
+briques : 
+
+nombre de types : 3 minimum (ex:incassable, cassable en 1 coup, en 2 coups)
+dessin du niveau : à gérer
+plusierus niveau : >=1
+
+score : à gérer
+vie : à gérer
+
+
+graphique : carte blanche
+
+musique pas obligatoire
