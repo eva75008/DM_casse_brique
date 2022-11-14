@@ -1,0 +1,10 @@
+plateau :                                pyxels
+  rebonds
+    -> sections>=3
+
+    taille : fixe
+
+
+   mvts : gérées avec le clavier
+
+   vitesse du plateau : fixe
