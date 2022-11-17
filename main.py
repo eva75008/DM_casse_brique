@@ -1,36 +1,51 @@
-
 import pyxel
 
-class Jeu:
-    def __init__(self):
-        pyxel.init(128, 128)
-        self.vaisseau_x = 60
-        self.vaisseau_y = 60
-        self.pause=False
-        pyxel.run(self.update, self.draw)
+# taille de la fenetre 128x128 pixels
+# ne pas modifier
+pyxel.init(128, 128, title="Casse brique")
 
-    def vaisseau_deplacement(self):
-        if self.pause==False:
-            if pyxel.btn(pyxel.KEY_RIGHT) and self.vaisseau_x<120:
-                self.vaisseau_x += 2
-            if pyxel.btn(pyxel.KEY_LEFT) and self.vaisseau_x>0:
-                self.vaisseau_x += -2
-            if pyxel.btn(pyxel.KEY_DOWN) and self.vaisseau_y<120:
-                self.vaisseau_y +=2
-            if pyxel.btn(pyxel.KEY_UP) and self.vaisseau_y>0:
-                self.vaisseau_y += -15
-            if self.vaisseau_y<120  and not pyxel.btn(pyxel.KEY_A):
-                self.vaisseau_y+= +5
-        if pyxel.btnr(pyxel.KEY_P):
-            self.pause = not self.pause
+# position initiale du vaisseau
+# (origine des positions : coin haut gauche)
+vaisseau_x = 54
+vaisseau_y = 120
+
+def vaisseau_deplacement(x):
+    """déplacement avec les touches de directions"""
+
+    if pyxel.btn(pyxel.KEY_RIGHT):
+        x = x + 3
+        if (x > 108):
+            x = 108
+    if pyxel.btn(pyxel.KEY_LEFT):
+        x = x - 3
+        if (x < 0) :
+            x = 0
+   
+    return x
 
 
-    def update(self):
-        self.vaisseau_deplacement()
+# =========================================================
+# == UPDATE
+# =========================================================
+def update():
+    """mise à jour des variables (30 fois par seconde)"""
 
-    def draw(self):
-        pyxel.cls(0)
-        pyxel.line(self.vaisseau_x, self.vaisseau_y, self.vaisseau_x - 7,self.vaisseau_y - 10, 10)
-        pyxel.circb(self.vaisseau_x, self.vaisseau_y, 8, 1)
-        
-Jeu()
+    global vaisseau_x, vaisseau_y
+
+    # mise à jour de la position du vaisseau
+    vaisseau_x = vaisseau_deplacement(vaisseau_x)
+
+
+# =========================================================
+# == DRAW
+# =========================================================
+def draw():
+    """création des objets (30 fois par seconde)"""
+
+    # vide la fenetre
+    pyxel.cls(0)
+
+    # vaisseau (rect 20,4)
+    pyxel.rect(vaisseau_x, vaisseau_y, 20, 4, 11)
+
+pyxel.run(update, draw)
