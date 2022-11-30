@@ -30,7 +30,7 @@ def plateau_deplacement(x):
 def update():
     """mise à jour des variables (30 fois par seconde)"""
 
-    global plateau_x, plateau_y, briques_x, briques_y
+    global plateau_x, plateau_y
 
     # mise à jour de la position du plateau
     plateau_x, plateau_y = plateau_deplacement(plateau_x, plateau_y)
