@@ -5,11 +5,15 @@ import pyxel
 pyxel.init(128, 128, title="Casse brique")
 
 # position initiale du vaisseau
-# (origine des positions : coin haut gauche)
-vaisseau_x = 54
-vaisseau_y = 120
+# (origine des positions : milieu bas)
+plateau_x = 54
+plateau_y = 120
+briques = [1, 2, 3, 1, 2, 3]
+#coordonnés des briques : de x = 4, y = 30 à x = 124, y = 40; hauteur = 10 largeur = 20
+briques_x = 4
+briques_y = 30
 
-def vaisseau_deplacement(x):
+def plateau_deplacement(x):
     """déplacement avec les touches de directions"""
 
     if pyxel.btn(pyxel.KEY_RIGHT):
@@ -30,10 +34,10 @@ def vaisseau_deplacement(x):
 def update():
     """mise à jour des variables (30 fois par seconde)"""
 
-    global vaisseau_x, vaisseau_y, 
+    global plateau_x, plateau_y, briques_x, briques_y
 
     # mise à jour de la position du vaisseau
-    vaisseau_x = vaisseau_deplacement(vaisseau_x)
+    plateau_x = plateau_deplacement(plateau_x)
 
 
 # =========================================================
@@ -46,6 +50,8 @@ def draw():
     pyxel.cls(0)
 
     # vaisseau (rect 20,4)
-    pyxel.rect(vaisseau_x, vaisseau_y, 20, 4, 10)
+    pyxel.rect(plateau_x, plateau_y, 20, 4, 10)
+    
+    pyxel.rect(briques_x, briques_y, 20, 4, 9)
 
 pyxel.run(update, draw)
