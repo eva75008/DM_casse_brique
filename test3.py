@@ -48,9 +48,8 @@ def draw():
     # plateau (carre 8x8)
     pyxel.rect(plateau_x, plateau_y, 8, 8, 1)
     # briques
-    for i in range(len(briques)):
-        if briques[i] != 0:
-            pyxel.rect(briques_x, briques_y, 19, 10, briques[i])
-        briques_x = briques_x + 20
+    pyxel.rect(briques_x, briques_y, 19, 10, briques[i])
+    briques_x = briques_x + 20
+    pyxel.rect(briques_x, briques_y, 19, 10, briques[i])
 
 pyxel.run(update, draw)
