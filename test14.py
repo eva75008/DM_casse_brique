@@ -60,8 +60,8 @@ def draw():
     pyxel.rect(briques_x, briques_y, 15, 4, 9)
     briques_x = briques_x + 18
     pyxel.rect(briques_x, briques_y, 15, 4, 9)
-    briques_x = briques_x + 18
-    pyxel.rect(briques_x, briques_y, 15, 4, 9)
+#    briques_x = briques_x + 18
+#    pyxel.rect(briques_x, briques_y, 15, 4, 9)
     
         # vaisseau (rect 20,4)
     pyxel.rect(plateau_x, plateau_y, 20, 4, 10)
