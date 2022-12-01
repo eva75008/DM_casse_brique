@@ -80,18 +80,22 @@ def brique_check(ball_x, ball_y, brk_x, briques, ball_velocity_y, ball_velocity_
 
             briques[n//2] = briques[n//2] - 1
             print(ball_x,  ball_y, ball_velocity_x, ball_velocity_y)
-            return ball_x,  ball_y, ball_velocity_x, ball_velocity_y
+            return int(ball_x),  int(ball_y), int(ball_velocity_x), int(ball_velocity_y)
 
 
           
 def plateau_check(ball_x, ball_y, ball_velocity_x, ball_velocity_y, plateau_x, plateau_y):
+    """
+    Définission des collisions et des réponses à ses collisions avec le plateau de jeu
+    """
+    
   if plateau_x<=ball_x<=plateau_x+20:
     ball_velocity_y = -abs(ball_velocity_y)
     return int(ball_velocity_x), int(ball_velocity_y)
     
   elif plateau_x-1 == ball_x and plateau_y == ball_y or plateau_x-2 == ball_x and plateau_y+1 == ball_y or plateau_x-3 == ball_x and plateau_y+1 == ball_y or plateau_x-4 == ball_x and plateau_y-2 == ball_y or plateau_x-5 == ball_x and plateau_y+3 == ball_y or plateau_x-5 == ball_x and plateau_y+3 == ball_y:       
     ball_velocity_x = -abs(ball_velocity_x)    
-    return ball_velocity_x, ball_velocity_y
+    return int(ball_velocity_x), int(ball_velocity_y)
    
   #elif plateau_x-1, plateau_y == ball_x, ball_y or plateau_x-2, plateau_y+1 == ball_x, ball_y or plateau_x-3, plateau_y+1 == ball_x, ball_y or plateau_x-4, plateau_y-2 == ball_x, ball_y or plateau_x-5, plateau_y+3 == ball_x, ball_y or plateau_x-5, plateau_y+3:
  #   ball_velocity_x = -abs(ball_velocity_x)   
@@ -150,9 +154,9 @@ def draw():
         pyxel.circ(ball_x, ball_y, 3, 7)
 
             # plateau (rect 20,4)
-        pyxel.tri(plateau_x, plateau_y, plateau_x, plateau_y+4, plateau_x-4, plateau_y+4, 11)
+        pyxel.tri(plateau_x, plateau_y, plateau_x, plateau_y+4, plateau_x-4, plateau_y+4, 10)
         pyxel.rect(plateau_x, plateau_y, 20, 4, 10)
-        pyxel.tri(plateau_x+20, plateau_y, plateau_x+20, plateau_y+4, plateau_x+24, plateau_y+4, 11)
+        pyxel.tri(plateau_x+20, plateau_y, plateau_x+20, plateau_y+4, plateau_x+24, plateau_y+4, 10)
 
 
     else:
