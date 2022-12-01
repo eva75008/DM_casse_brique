@@ -87,10 +87,12 @@ def brique_check(ball_x, ball_y, brk_x, briques, ball_velocity_y, ball_velocity_
 def plateau_check(ball_x, ball_y, ball_velocity_x, ball_velocity_y, plateau_x, plateau_y):
   if plateau_x<=ball_x<=plateau_x+20:
     ball_velocity_y = -abs(ball_velocity_y)
+    return ball_x,  ball_y, ball_velocity_x, ball_velocity_y
     
  # elif plateau_x, plateau_y == ball_x, ball_y or plateau_x, plateau_y == ball_x, ball_y:
   elif plateau_x-1 == ball_x and plateau_y == ball_y or plateau_x-2 == ball_x and plateau_y+1 == ball_y or plateau_x-3 == ball_x and plateau_y+1 == ball_y or plateau_x-4 == ball_x and plateau_y-2 == ball_y or plateau_x-5 == ball_x and plateau_y+3 == ball_y or plateau_x-5 == ball_x and plateau_y+3 == ball_y:       
-    ball_velocity_x = -abs(ball_velocity_x)         
+    ball_velocity_x = -abs(ball_velocity_x)    
+    return ball_x,  ball_y, ball_velocity_x, ball_velocity_y
    
   #elif plateau_x-1, plateau_y == ball_x, ball_y or plateau_x-2, plateau_y+1 == ball_x, ball_y or plateau_x-3, plateau_y+1 == ball_x, ball_y or plateau_x-4, plateau_y-2 == ball_x, ball_y or plateau_x-5, plateau_y+3 == ball_x, ball_y or plateau_x-5, plateau_y+3:
  #   ball_velocity_x = -abs(ball_velocity_x)   
@@ -117,7 +119,7 @@ def update():
     if ball_y == 30 or ball_y == 34:
         ball_x, ball_y, ball_velocity_x, ball_velocity_y = brique_check(ball_x, ball_y, brk_x, briques, ball_velocity_y, ball_velocity_x)
     elif 120<=ball_y<=123: 
-        plateau_check(ball_x, ball_y, ball_velocity_x, ball_velocity_y, plateau_x, plateau_y)
+        ball_x, ball_y, ball_velocity_x, ball_velocity_y = plateau_check(ball_x, ball_y, ball_velocity_x, ball_velocity_y, plateau_x, plateau_y)
 
 
     ball_x, ball_y, ball_velocity_x, ball_velocity_y = ball_mvt(ball_x, ball_y, ball_velocity_x, ball_velocity_y)
