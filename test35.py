@@ -167,19 +167,22 @@ def draw():
     # vide la fenetre
     pyxel.cls(0)
     if life > 0:
-        briques_x = 10
-        briques_y = 30
-        for i in range(len(briques)):
-            if briques[i] != 0:
-                pyxel.rect(briques_x, briques_y, 15, 4, briques[i])
-            briques_x = briques_x + 18
+        if briques == [0, 0, 0, 0, 0, 0]:
+            pyxel.text(50, 64, "GAGNÉ", 7)
+        else:
+            briques_x = 10
+            briques_y = 30
+            for i in range(len(briques)):
+                if briques[i] != 0:
+                    pyxel.rect(briques_x, briques_y, 15, 4, briques[i])
+                briques_x = briques_x + 18
 
-        pyxel.circ(ball_x, ball_y, 3, 7)
+            pyxel.circ(ball_x, ball_y, 3, 7)
 
-            # plateau (rect 20,4)
-        pyxel.tri(plateau_x, plateau_y, plateau_x, plateau_y+3, plateau_x-4, plateau_y+3, 10)
-        pyxel.rect(plateau_x, plateau_y, 20, 4, 10)
-        pyxel.tri(plateau_x+20, plateau_y, plateau_x+20, plateau_y+3, plateau_x+24, plateau_y+3, 10)
+                # plateau (rect 20,4)
+            pyxel.tri(plateau_x, plateau_y, plateau_x, plateau_y+3, plateau_x-4, plateau_y+3, 10)
+            pyxel.rect(plateau_x, plateau_y, 20, 4, 10)
+            pyxel.tri(plateau_x+20, plateau_y, plateau_x+20, plateau_y+3, plateau_x+24, plateau_y+3, 10)
 
 
     else:
