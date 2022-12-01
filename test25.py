@@ -87,7 +87,7 @@ def brique_check(ball_x, ball_y, brk_x, briques, ball_velocity_y, ball_velocity_
 def plateau_check(ball_x, ball_y, ball_velocity_x, ball_velocity_y, plateau_x, plateau_y):
   if plateau_x<=ball_x<=plateau_x+20:
     ball_velocity_y = -abs(ball_velocity_y)
-    return ball_velocity_x, ball_velocity_y
+    return int(ball_velocity_x), int(ball_velocity_y)
     
   elif plateau_x-1 == ball_x and plateau_y == ball_y or plateau_x-2 == ball_x and plateau_y+1 == ball_y or plateau_x-3 == ball_x and plateau_y+1 == ball_y or plateau_x-4 == ball_x and plateau_y-2 == ball_y or plateau_x-5 == ball_x and plateau_y+3 == ball_y or plateau_x-5 == ball_x and plateau_y+3 == ball_y:       
     ball_velocity_x = -abs(ball_velocity_x)    
