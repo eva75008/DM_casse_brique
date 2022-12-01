@@ -127,9 +127,9 @@ def draw():
         pyxel.circ(ball_x, ball_y, 3, 7)
 
             # plateau (rect 20,4)
-        pyxel.tri(plateau_x, plateau_y, plateau_x, plateau_y+4, plateau_x-4, plateau_y+4, 10)
+        pyxel.tri(plateau_x, plateau_y, plateau_x, plateau_y+4, plateau_x-4, plateau_y+4, 11)
         pyxel.rect(plateau_x, plateau_y, 20, 4, 10)
-        pyxel.tri(plateau_x+20, plateau_y, plateau_x+20, plateau_y+4, plateau_x+24, plateau_y+4, 10)
+        pyxel.tri(plateau_x+20, plateau_y, plateau_x+20, plateau_y+4, plateau_x+24, plateau_y+4, 11)
 
 
     else:
@@ -140,8 +140,3 @@ def draw():
 
 
 pyxel.run(update, draw)
-
-
-
-
-pyxel.tri(x1, y1, x2, y2, x3, y3, col)
