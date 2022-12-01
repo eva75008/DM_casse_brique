@@ -69,18 +69,29 @@ def life_is_ok(life, ball_y):
 
 
 
-def brique_check(ball_x, ball_y, brk_x, briques, ball_velocity_y, ball_velocity_x):
+def brique_check(ball_x, ball_y, brk_x, briques, ball_velocity_y, ball_velocity_x, value_h):
     """vérification que les briques sont retirées ou laissées à leurs places"""
 
-    for n in range(0,10,2):
+    if value == "low":
+        for n in range(0,10,2):
+            if brk_x[n]<=ball_x<=brk_x[n+1] and briques[n//2] != 0:
 
-        if brk_x[n]<=ball_x<=brk_x[n+1] and briques[n//2] != 0:
+                ball_velocity_y = abs(ball_velocity_y)
 
-            ball_velocity_y = abs(ball_velocity_y)
+                briques[n//2] = briques[n//2] - 1
+                #print(ball_x,  ball_y, ball_velocity_x, ball_velocity_y)
+                return int(ball_x),  int(ball_y), int(ball_velocity_x), int(ball_velocity_y)
+            
+    if value == "high":
+        for n in range(0,10,2):
+            if brk_x[n]<=ball_x<=brk_x[n+1] and briques[n//2] != 0:
 
-            briques[n//2] = briques[n//2] - 1
-            #print(ball_x,  ball_y, ball_velocity_x, ball_velocity_y)
-            return int(ball_x),  int(ball_y), int(ball_velocity_x), int(ball_velocity_y)
+                ball_velocity_y = -abs(ball_velocity_y)
+
+                briques[n//2] = briques[n//2] - 1
+                #print(ball_x,  ball_y, ball_velocity_x, ball_velocity_y)
+                return int(ball_x),  int(ball_y), int(ball_velocity_x), int(ball_velocity_y)
+        
 
 
           
@@ -125,8 +136,13 @@ def update():
     ball_x, ball_y, ball_velocity_x, ball_velocity_y = ball_mvt(ball_x, ball_y, ball_velocity_x, ball_velocity_y)
     
 
-    if ball_y == 30 or ball_y-3 == 34:
-        ball_x, ball_y, ball_velocity_x, ball_velocity_y = brique_check(ball_x, ball_y, brk_x, briques, ball_velocity_y, ball_velocity_x)
+    if ball_y == 30:
+        value="low"
+        ball_x, ball_y, ball_velocity_x, ball_velocity_y = brique_check(ball_x, ball_y, brk_x, briques, ball_velocity_y, ball_velocity_x, value_h)
+        
+    if ball_y-3 == 34:
+        value="high"
+        ball_x, ball_y, ball_velocity_x, ball_velocity_y = brique_check(ball_x, ball_y, brk_x, briques, ball_velocity_y, ball_velocity_x, value_h)
     elif 120<=ball_y<=123: 
         ball_velocity_x, ball_velocity_y = plateau_check(ball_x, ball_y, ball_velocity_x, ball_velocity_y, plateau_x, plateau_y)
 
