@@ -79,7 +79,7 @@ def brique_check(ball_x, ball_y, brk_x, briques, ball_velocity_y, ball_velocity_
             ball_velocity_y = abs(ball_velocity_y)
 
             briques[n//2] = briques[n//2] - 1
-            print(ball_x,  ball_y, ball_velocity_x, ball_velocity_y)
+            #print(ball_x,  ball_y, ball_velocity_x, ball_velocity_y)
             return int(ball_x),  int(ball_y), int(ball_velocity_x), int(ball_velocity_y)
 
 
@@ -118,7 +118,7 @@ def update():
     global briques_x, briques_y, ball_x, ball_y, ball_velocity_x, ball_velocity_y, life, brk_x, briques
 
 
-    if ball_y == 30 or ball_y == 34:
+    if ball_y == 30 or ball_y-3 == 34:
         ball_x, ball_y, ball_velocity_x, ball_velocity_y = brique_check(ball_x, ball_y, brk_x, briques, ball_velocity_y, ball_velocity_x)
     elif 120<=ball_y<=123: 
         ball_velocity_x, ball_velocity_y = plateau_check(ball_x, ball_y, ball_velocity_x, ball_velocity_y, plateau_x, plateau_y)
