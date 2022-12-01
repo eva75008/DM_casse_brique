@@ -121,6 +121,9 @@ def update():
     global plateau_x, plateau_y
     global briques_x, briques_y, ball_x, ball_y, ball_velocity_x, ball_velocity_y, life, brk_x, briques
 
+    
+    ball_x, ball_y, ball_velocity_x, ball_velocity_y = ball_mvt(ball_x, ball_y, ball_velocity_x, ball_velocity_y)
+    
 
     if ball_y == 30 or ball_y-3 == 34:
         ball_x, ball_y, ball_velocity_x, ball_velocity_y = brique_check(ball_x, ball_y, brk_x, briques, ball_velocity_y, ball_velocity_x)
@@ -128,7 +131,7 @@ def update():
         ball_velocity_x, ball_velocity_y = plateau_check(ball_x, ball_y, ball_velocity_x, ball_velocity_y, plateau_x, plateau_y)
 
 
-    ball_x, ball_y, ball_velocity_x, ball_velocity_y = ball_mvt(ball_x, ball_y, ball_velocity_x, ball_velocity_y)
+ 
 
     # mise à jour de la position du vaisseau
     plateau_x = plateau_deplacement(plateau_x)
