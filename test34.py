@@ -8,7 +8,6 @@ pyxel.init(128, 128, title="Casse brique")
 # (origine des positions : milieu bas)
 plateau_x = 54
 plateau_y = 120
-value="low"
 
 #plateau_flrm = [plateau_x, plateau_y, plateau_x, plateau_y, plateau_x, plateau_y, plateau_x, plateau_y, plateau_x, plateau_y, ]
 #plateau_flrm = [plateau_x-1, plateau_y, plateau_x-2, plateau_y+1, plateau_x-3, plateau_y+1, plateau_x-4, plateau_y-2, plateau_x-5, plateau_y+3, plateau_x-5, plateau_y+3]
@@ -71,10 +70,10 @@ def life_is_ok(life, ball_y):
 
 
 
-def brique_check(ball_x, ball_y, brk_x, briques, ball_velocity_y, ball_velocity_x, value):
+def brique_check(ball_x, ball_y, brk_x, briques, ball_velocity_y, ball_velocity_x):
     """vérification que les briques sont retirées ou laissées à leurs places"""
 
-    if value == "low":
+    if ball_y == 30:
         for n in range(0,10,2):
             if brk_x[n]<=ball_x<=brk_x[n+1] and briques[n//2] != 0:
 
@@ -84,7 +83,7 @@ def brique_check(ball_x, ball_y, brk_x, briques, ball_velocity_y, ball_velocity_
                 #print(ball_x,  ball_y, ball_velocity_x, ball_velocity_y)
                 return int(ball_x),  int(ball_y), int(ball_velocity_x), int(ball_velocity_y)
             
-    if value == "high":
+    if ball_y-3 == 34 and ball_velocity_y > 0:
         for n in range(0,10,2):
             if brk_x[n]<=ball_x<=brk_x[n+1] and briques[n//2] != 0:
 
@@ -106,11 +105,13 @@ def plateau_check(ball_x, ball_y, ball_velocity_x, ball_velocity_y, plateau_x, p
         return int(ball_velocity_x), int(ball_velocity_y)
     
     elif plateau_x-1 == ball_x and plateau_y == ball_y or plateau_x-2 == ball_x and plateau_y+1 == ball_y or plateau_x-3 == ball_x and plateau_y+1 == ball_y or plateau_x-4 == ball_x and plateau_y-2 == ball_y or plateau_x-5 == ball_x and plateau_y+3 == ball_y or plateau_x-5 == ball_x and plateau_y+3 == ball_y:       
-        ball_velocity_x = -abs(ball_velocity_x)    
+        ball_velocity_x = -abs(ball_velocity_x)
+        ball_velocity_y = -abs(ball_velocity_y)
         return int(ball_velocity_x), int(ball_velocity_y)
     
     elif plateau_x+21 == ball_x and plateau_y == ball_y or plateau_x+22 == ball_x and plateau_y+1 == ball_y or plateau_x+23 == ball_x and plateau_y+1 == ball_y or plateau_x+24 == ball_x and plateau_y-2 == ball_y or plateau_x+25 == ball_x and plateau_y+3 == ball_y or plateau_x+25 == ball_x and plateau_y+3 == ball_y:       
-        ball_velocity_x = -abs(ball_velocity_x)    
+        ball_velocity_x = abs(ball_velocity_x)   
+        ball_velocity_y = -abs(ball_velocity_y)
         return int(ball_velocity_x), int(ball_velocity_y)
 
   #elif plateau_x-1, plateau_y == ball_x, ball_y or plateau_x-2, plateau_y+1 == ball_x, ball_y or plateau_x-3, plateau_y+1 == ball_x, ball_y or plateau_x-4, plateau_y-2 == ball_x, ball_y or plateau_x-5, plateau_y+3 == ball_x, ball_y or plateau_x-5, plateau_y+3:
@@ -138,13 +139,11 @@ def update():
     ball_x, ball_y, ball_velocity_x, ball_velocity_y = ball_mvt(ball_x, ball_y, ball_velocity_x, ball_velocity_y)
     
 
-    if ball_y == 30:
-        value="low"
-        ball_x, ball_y, ball_velocity_x, ball_velocity_y = brique_check(ball_x, ball_y, brk_x, briques, ball_velocity_y, ball_velocity_x, value)
+    if ball_y == 30 or ball_y-3 == 34:
+        ball_x, ball_y, ball_velocity_x, ball_velocity_y = brique_check(ball_x, ball_y, brk_x, briques, ball_velocity_y, ball_velocity_x)
         
-    if ball_y-3 == 34:
-        value="high"
-        ball_x, ball_y, ball_velocity_x, ball_velocity_y = brique_check(ball_x, ball_y, brk_x, briques, ball_velocity_y, ball_velocity_x, value)
+   # if ball_y-3 == 34:
+   #     ball_x, ball_y, ball_velocity_x, ball_velocity_y = brique_check(ball_x, ball_y, brk_x, briques, ball_velocity_y, ball_velocity_x)
     elif 120<=ball_y<=123: 
         ball_velocity_x, ball_velocity_y = plateau_check(ball_x, ball_y, ball_velocity_x, ball_velocity_y, plateau_x, plateau_y)
 
@@ -178,9 +177,9 @@ def draw():
         pyxel.circ(ball_x, ball_y, 3, 7)
 
             # plateau (rect 20,4)
-        pyxel.tri(plateau_x, plateau_y, plateau_x, plateau_y+4, plateau_x-4, plateau_y+4, 10)
+        pyxel.tri(plateau_x, plateau_y, plateau_x, plateau_y+3, plateau_x-4, plateau_y+3, 10)
         pyxel.rect(plateau_x, plateau_y, 20, 4, 10)
-        pyxel.tri(plateau_x+20, plateau_y, plateau_x+20, plateau_y+4, plateau_x+24, plateau_y+4, 10)
+        pyxel.tri(plateau_x+20, plateau_y, plateau_x+20, plateau_y+3, plateau_x+24, plateau_y+3, 10)
 
 
     else:
