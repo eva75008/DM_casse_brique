@@ -88,8 +88,9 @@ def plateau_check(ball_x, ball_y, ball_velocity_x, ball_velocity_y, plateau_x, p
   if plateau_x<=ball_x<=plateau_x+20:
     ball_velocity_y = -abs(ball_velocity_y)
     
-  elif plateau_x, plateau_y == ball_x, ball_y or plateau_x, plateau_y == ball_x, ball_y:
-    #      
+ # elif plateau_x, plateau_y == ball_x, ball_y or plateau_x, plateau_y == ball_x, ball_y:
+  elif plateau_x-1 == ball_x and plateau_y == ball_y or plateau_x-2 == ball_x and plateau_y+1 == ball_y or plateau_x-3 == ball_x and plateau_y+1 == ball_y or plateau_x-4 == ball_x and plateau_y-2 == ball_y or plateau_x-5 == ball_x and plateau_y+3 == ball_y or plateau_x-5 == ball_x and plateau_y+3 == ball_y:       
+    ball_velocity_x = -abs(ball_velocity_x)         
    
   #elif plateau_x-1, plateau_y == ball_x, ball_y or plateau_x-2, plateau_y+1 == ball_x, ball_y or plateau_x-3, plateau_y+1 == ball_x, ball_y or plateau_x-4, plateau_y-2 == ball_x, ball_y or plateau_x-5, plateau_y+3 == ball_x, ball_y or plateau_x-5, plateau_y+3:
  #   ball_velocity_x = -abs(ball_velocity_x)   
