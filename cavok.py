@@ -256,33 +256,34 @@ def update():
     execution de la fonction du déplacement du plateau de jeu
     vérification du nombre de vies selon l'ordonnée de la balle
     """
-
-    global plateau_x, plateau_y
-    global briques_x, briques_y, ball_x, ball_y, ball_velocity_x, ball_velocity_y, life, brk_x, briques, value, plateau_velocity_x, score, time
-
-
-    ball_x, ball_y, ball_velocity_x, ball_velocity_y = ball_mvt(ball_x, ball_y, ball_velocity_x, ball_velocity_y, plateau_velocity_x)
+    if life > 0:
+        
+        global plateau_x, plateau_y
+        global briques_x, briques_y, ball_x, ball_y, ball_velocity_x, ball_velocity_y, life, brk_x, briques, value, plateau_velocity_x, score, time
 
 
-    if (ball_y == 34 or ball_y == 33) or ball_y+3 == 30:
-        ball_x, ball_y, ball_velocity_x, ball_velocity_y, score = brique_check(ball_x, ball_y, brk_x, briques, ball_velocity_y, ball_velocity_x, score)
-
-    elif 120<=ball_y<=123:
-        ball_velocity_x, ball_velocity_y = plateau_check(ball_x, ball_y, ball_velocity_x, ball_velocity_y, plateau_x, plateau_y, plateau_velocity_x)
+        ball_x, ball_y, ball_velocity_x, ball_velocity_y = ball_mvt(ball_x, ball_y, ball_velocity_x, ball_velocity_y, plateau_velocity_x)
 
 
+        if (ball_y == 34 or ball_y == 33) or ball_y+3 == 30:
+            ball_x, ball_y, ball_velocity_x, ball_velocity_y, score = brique_check(ball_x, ball_y, brk_x, briques, ball_velocity_y, ball_velocity_x, score)
+
+        elif 120<=ball_y<=123:
+            ball_velocity_x, ball_velocity_y = plateau_check(ball_x, ball_y, ball_velocity_x, ball_velocity_y, plateau_x, plateau_y, plateau_velocity_x)
 
 
-    # mise à jour de la position du vaisseau
-    plateau_x, plateau_velocity_x = plateau_deplacement(plateau_x, plateau_velocity_x)
-
-    life = life_is_ok(life, ball_y)
 
 
-    #appel de la fonction si time est à 240 ou 40 (soit 8 et 15s)
-    if time == 900 or time == 450:
-        time, ball_velocity_x, ball_velocity_y = timer(time, ball_velocity_x, ball_velocity_y)
-    time = time+1
+        # mise à jour de la position du vaisseau
+        plateau_x, plateau_velocity_x = plateau_deplacement(plateau_x, plateau_velocity_x)
+
+        life = life_is_ok(life, ball_y)
+
+
+        #appel de la fonction si time est à 240 ou 40 (soit 8 et 15s)
+        if time == 900 or time == 450:
+            time, ball_velocity_x, ball_velocity_y = timer(time, ball_velocity_x, ball_velocity_y)
+        time = time+1
 
 
 
@@ -312,6 +313,7 @@ def draw():
             pyxel.text(50, 64, "VICTOIRE", 7)
             score_txt = "Score de " + str(score)
             pyxel.text(43, 100, score_txt, 7)
+            
         else:
 
             #affiche le nombre de vies restantes
