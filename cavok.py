@@ -14,6 +14,10 @@ plateau_y = 120
 plateau_velocity_x = 0
 
 
+'''
+Choix de ne mettre que 6 briques et un seul niveau car le jeu est assez dur comme ça
+'''
+
 #plateau_flrm = [plateau_x, plateau_y, plateau_x, plateau_y, plateau_x, plateau_y, plateau_x, plateau_y, plateau_x, plateau_y, ]
 #plateau_flrm = [plateau_x-1, plateau_y, plateau_x-2, plateau_y+1, plateau_x-3, plateau_y+1, plateau_x-4, plateau_y-2, plateau_x-5, plateau_y+3, plateau_x-5, plateau_y+3]
 
