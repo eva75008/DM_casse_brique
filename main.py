@@ -113,18 +113,23 @@ class App:
             self.ball_velocity_y = -abs(self.ball_velocity_y)
 
 #lors d'une collision avec le bord gauche, rebond vers le haut et la gauche
-        elif self.plateau_x-1 == self.ball_x and self.plateau_y == self.ball_y or self.plateau_x-2 == self.ball_x and self.plateau_y+1 == self.ball_y or self.plateau_x-3 == self.ball_x and self.plateau_y+1 == self.ball_y or self.plateau_x-4 == self.ball_x and self.plateau_y-2 == self.ball_y or self.plateau_x-5 == self.ball_x and self.plateau_y+3 == self.ball_y or self.plateau_x-5 == self.ball_x and self.plateau_y+3 == self.ball_y:
+        #elif self.plateau_x-1 == self.ball_x and self.plateau_y == self.ball_y or self.plateau_x-2 == self.ball_x and self.plateau_y+1 == self.ball_y or self.plateau_x-3 == self.ball_x and self.plateau_y+1 == self.ball_y or self.plateau_x-4 == self.ball_x and self.plateau_y-2 == self.ball_y or self.plateau_x-5 == self.ball_x and self.plateau_y+3 == self.ball_y or self.plateau_x-5 == self.ball_x and self.plateau_y+3 == self.ball_y:
 
-            self.ball_velocity_x = -abs(self.ball_velocity_x)
-            self.ball_velocity_y = -abs(self.ball_velocity_y)
+        elif self.plateau_x-4 <= self.ball_x <= self.plateau_x and self.plateau_y <= self.ball_y <= self.plateau_y+4:
+
+
+            self.ball_velocity_x = -abs(self.ball_velocity_y)
+            self.ball_velocity_y = -abs(self.ball_velocity_x)
 
 
 
 #lors d'une collision avec le bord droit, rebond vers le haut et la droite
-        elif self.plateau_x+21 == self.ball_x and self.plateau_y == self.ball_y or self.plateau_x+22 == self.ball_x and self.plateau_y+1 == self.ball_y or self.plateau_x+23 == self.ball_x and self.plateau_y+1 == self.ball_y or self.plateau_x+24 == self.ball_x and self.plateau_y-2 == self.ball_y or self.plateau_x+25 == self.ball_x and self.plateau_y+3 == self.ball_y or self.plateau_x+25 == self.ball_x and self.plateau_y+3 == self.ball_y:
+        #elif self.plateau_x+21 == self.ball_x and self.plateau_y == self.ball_y or self.plateau_x+22 == self.ball_x and self.plateau_y+1 == self.ball_y or self.plateau_x+23 == self.ball_x and self.plateau_y+1 == self.ball_y or self.plateau_x+24 == self.ball_x and self.plateau_y-2 == self.ball_y or self.plateau_x+25 == self.ball_x and self.plateau_y+3 == self.ball_y or self.plateau_x+25 == self.ball_x and self.plateau_y+3 == self.ball_y:
 
-            self.ball_velocity_x = abs(self.ball_velocity_x)
-            self.ball_velocity_y = -abs(self.ball_velocity_y)
+        elif self.plateau_x+20 <= self.ball_x <= self.plateau_x+24 and self.plateau_y <= self.ball_y <= self.plateau_y+4:
+
+            self.ball_velocity_x = abs(self.ball_velocity_y)
+            self.ball_velocity_y = -abs(self.ball_velocity_x)
 
 
 
