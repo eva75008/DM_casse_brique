@@ -53,13 +53,10 @@ time = 0
 def plateau_deplacement(x, plateau_velocity_x):
     """
     déplacement avec les touches de directions
-
     déplacement latéral du plateau avec une vitesse de 3
     sauf lorsque le plateau est en bordure
     si aucun mouvement, vitesse du plateau en x est 0
-
     this function return the board game's x and velocity
-
     """
 
     if pyxel.btn(pyxel.KEY_RIGHT):
@@ -82,7 +79,6 @@ def ball_mvt(x, y, ball_velocity_x, ball_velocity_y, plateau_velocity_x):
     """
     Cette fonction définie la trajectoire et la position de la balle
     La vélocité de la balle ne peut diminuer donc elle augmente avec le temps
-
     Elle retourne les coordonnées et les velocités de la balle
     """
 
@@ -109,15 +105,11 @@ def life_is_ok(life, ball_y):
     """
     Vérification  de l'ordonnée de la balle
     retire une vie si la balle est en ordonnée supérieur à 127
-
     his function return the remaining lives
-
     >>>life_is_ok(3,129)
     2
-
     >>>life_is_ok(3,100)
     3
-
     >>>life_is_ok(0,129)
     -1
     """
@@ -133,10 +125,8 @@ def brique_check(ball_x, ball_y, brk_x, briques, ball_velocity_y, ball_velocity_
     selon :
     si la balle arrive par le bas:
         retirer la brique et rebondir vers le bas
-
     si la balle arrive par le haut:
         retirer la brique et rebondir vers le haut
-
     This funtion return the ball velocity x and y, the ball x and y, and the player's score
     """
 
@@ -170,13 +160,10 @@ def brique_check(ball_x, ball_y, brk_x, briques, ball_velocity_y, ball_velocity_
 def plateau_check(ball_x, ball_y, ball_velocity_x, ball_velocity_y, plateau_x, plateau_y, plateau_velocity_x):
     """
     Définission des collisions et des réponses à ses collisions avec le plateau de jeu
-
     soit le milieu
     soit la balle est sur le bord gauche
     soit le bord droit
-
     soit aucun des trois
-
     This function return the velocity of the ball in x and y
     """
 
@@ -214,7 +201,6 @@ def timer(time, ball_velocity_x, ball_velocity_y):
     sachant de time augmente de 1 par 1/30s, à 15s ou 30s, timer sera à 450 ou 900
     la fonction n'est appelée que lorsque time est à 450 ou 900
     on augmente la vélocité de la balle y et en x si elle est toujours de 1
-
     This function return time, the ball's velocity x and y
     '''
 
@@ -246,7 +232,6 @@ def timer(time, ball_velocity_x, ball_velocity_y):
 def update():
     """
     mise à jour des variables (30 fois par seconde)
-
     vérification des états du jeu:
     mouvement de la balle
     selon l'ordonnée :
@@ -256,10 +241,13 @@ def update():
     execution de la fonction du déplacement du plateau de jeu
     vérification du nombre de vies selon l'ordonnée de la balle
     """
+
+    global plateau_x, plateau_y
+    global briques_x, briques_y, ball_x, ball_y, ball_velocity_x, ball_velocity_y, brk_x, briques, value, plateau_velocity_x, score, time, life
+
     if life > 0:
-        
-        global plateau_x, plateau_y
-        global briques_x, briques_y, ball_x, ball_y, ball_velocity_x, ball_velocity_y, life, brk_x, briques, value, plateau_velocity_x, score, time
+
+
 
 
         ball_x, ball_y, ball_velocity_x, ball_velocity_y = ball_mvt(ball_x, ball_y, ball_velocity_x, ball_velocity_y, plateau_velocity_x)
@@ -293,14 +281,12 @@ def update():
 def draw():
     """
     création des objets (30 fois par seconde)
-
     dans l'ordre :
     afficher les vies restantes
     affichage du score
     construire les briques
     dessiner la balle
     afficher la plateau de jeu
-
     """
 
     # vide la fenetre
@@ -313,7 +299,7 @@ def draw():
             pyxel.text(50, 64, "VICTOIRE", 7)
             score_txt = "Score de " + str(score)
             pyxel.text(43, 100, score_txt, 7)
-            
+
         else:
 
             #affiche le nombre de vies restantes
