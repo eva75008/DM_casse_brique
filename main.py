@@ -144,6 +144,8 @@ class App:
             retirer la brique et rebondir vers le bas
         si la balle arrive par le haut:
             retirer la brique et rebondir vers le haut
+            
+        La balle peut passer entre les briques 
         """
 
         #calcul la brique touchée
